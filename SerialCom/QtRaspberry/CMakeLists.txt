@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 
 set(PROJECT_NAME "SerialCom")
-set(VERSION_MAJOR "5") ## 5 or 6
+set(VERSION_MAJOR "6") ## 5 or 6
 
 project(${PROJECT_NAME} VERSION 0.1 LANGUAGES CXX)
 
