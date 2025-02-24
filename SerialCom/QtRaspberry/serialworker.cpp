@@ -230,7 +230,7 @@ void SerialWorker::sendData(Frame *frame)
 
     QByteArray frameBuffer = frame->GetBuffer();
 
-    outBuffer[dataToSend++] = Frame::FRAME_START;
+    outBuffer.append(Frame::FRAME_START);
 
     quint8 value;
 
@@ -240,10 +240,10 @@ void SerialWorker::sendData(Frame *frame)
         if(value == Frame::FRAME_START || value == Frame::FRAME_ESCAPE_CHAR)
         {
             //qDebug() << "SPECIAL CHAR: " << value << " - AT INDEX: " << i;
-            outBuffer[dataToSend++] = Frame::FRAME_ESCAPE_CHAR;
-            outBuffer[dataToSend++] = value ^ Frame::FRAME_XOR_CHAR;
+            outBuffer.append(Frame::FRAME_ESCAPE_CHAR);
+            outBuffer.append(value ^ Frame::FRAME_XOR_CHAR);
         } else
-            outBuffer[dataToSend++] = value;
+            outBuffer.append(value);
     }
 
     m_Serial->write(outBuffer);

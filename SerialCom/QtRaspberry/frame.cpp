@@ -9,11 +9,11 @@ Frame::Frame(QObject *parent) : QObject(parent)
 
 Frame::Frame(quint8 cmd, quint8 data, QObject *parent) : QObject(parent)
 {
-    m_buffer[INDEX_START_OF_FRAME] = FRAME_START;
-    m_buffer[INDEX_CMD] = cmd;
-    m_buffer[INDEX_DATA_LENGTH] = 1;
-    m_buffer[INDEX_FIRST_DATA_BYTE] = data;
-    m_buffer += CalculateChecksum();
+    m_buffer.append(FRAME_START);
+    m_buffer.append(cmd);
+    m_buffer.append(1);
+    m_buffer.append(data);
+    m_buffer.append(CalculateChecksum());
 }
 
 Frame::Frame(quint8 cmd, qint8 data, QObject *parent) : QObject(parent)
