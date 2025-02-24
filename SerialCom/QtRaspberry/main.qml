@@ -165,9 +165,9 @@ Window
             anchors.topMargin: 70
             backgroundHeight: 50
             backgroundWidth: 110
-            onSwitched:
+            onSwitched: function(on)
             {
-                if(on == true)   
+                if(on === true)
                     FrameProcessorSingleton.enableAdc(1);
                 else
                     FrameProcessorSingleton.enableAdc(0);
